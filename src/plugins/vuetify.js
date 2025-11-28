@@ -173,31 +173,5 @@ export default createVuetify({
         },
       },
     },
-    // themes: {
-    //   light: {
-    //     dark: false,
-    //     colors: {
-    //       primary: "#0A0A0A", // #00BB85 - #3b82f6 -#f97316
-    //       secondary: "#f9f9f9",
-    //       white: "#fff",
-    //       danger: "#ef4444",
-    //       success: "#00BB85",
-    //       background: "#fff",
-    //       surface: "#fff",
-    //     },
-    //   },
-    //   dark: {
-    //     dark: true,
-    //     colors: {
-    //       primary: "#FFFFFF",
-    //       secondary: "#212121",
-    //       white: "#0A0A0A",
-    //       danger: "#ef4444",
-    //       success: "#00BB85",
-    //       background: "#0A0A0A",
-    //       surface: "#0A0A0A",
-    //     },
-    //   },
-    // },
   },
 });
