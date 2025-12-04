@@ -44,7 +44,7 @@ const handlerForgotPassword = async () => {
   } catch (error) {
     toast.error(
       error?.response?.data?.message ||
-      "Falha ao enviar email para redefinição!"
+        "Falha ao enviar email para redefinição!"
     );
   } finally {
     state.loading = false;
@@ -101,16 +101,34 @@ const handlerResetPassword = async () => {
         <p>Informe os dados solicitados</p>
       </v-col>
       <v-col cols="12" class="text-start pt-0 pb-2">
-        <v-text-field v-model="state.data.email" prepend-inner-icon="lucide:Mail"
-          :error-messages="f$.data.email.$errors.map((e) => e.$message)" @input="f$.data.email.$touch"
-          @blur="f$.data.email.$touch" label="Email da conta" />
+        <v-text-field
+          v-model="state.data.email"
+          prepend-inner-icon="lucide:Mail"
+          :error-messages="f$.data.email.$errors.map((e) => e.$message)"
+          @input="f$.data.email.$touch"
+          @blur="f$.data.email.$touch"
+          label="Email da conta"
+        />
       </v-col>
       <v-col cols="12" class="pt-0 pb-1">
-        <v-btn type="submit" color="primary" flat block class="mb-3 float-start" :loading="state.loading" text="Enviar">
+        <v-btn
+          type="submit"
+          color="primary"
+          flat
+          block
+          class="mb-3 float-start"
+          :loading="state.loading"
+          text="Enviar"
+        >
         </v-btn>
       </v-col>
       <v-col cols="12" class="pt-0 pb-1 text-center">
-        <v-btn :to="{ name: 'auth.login' }" variant="plain" text="Entrar" color="dark"></v-btn>
+        <v-btn
+          :to="{ name: 'auth.login' }"
+          variant="plain"
+          text="Entrar"
+          color="dark"
+        ></v-btn>
       </v-col>
     </v-row>
   </v-form>
@@ -126,12 +144,25 @@ const handlerResetPassword = async () => {
         <v-otp-input v-model="state.data.code" class="w-100"></v-otp-input>
       </v-col>
       <v-col cols="12" class="pt-0 pb-1">
-        <v-btn :disabled="state.data.code.length < 5 || loading" type="submit" color="primary" flat block
-          class="mb-3 float-start" :loading="state.loading" text="Verificar Código">
+        <v-btn
+          :disabled="state.data.code.length < 5 || loading"
+          type="submit"
+          color="primary"
+          flat
+          block
+          class="mb-3 float-start"
+          :loading="state.loading"
+          text="Verificar Código"
+        >
         </v-btn>
       </v-col>
       <v-col cols="12" class="pt-0 pb-1 text-center">
-        <v-btn :to="{ name: 'auth.login' }" variant="plain" text="Entrar" color="dark"></v-btn>
+        <v-btn
+          :to="{ name: 'auth.login' }"
+          variant="plain"
+          text="Entrar"
+          color="dark"
+        ></v-btn>
       </v-col>
     </v-row>
   </v-form>
@@ -143,26 +174,60 @@ const handlerResetPassword = async () => {
         <p>Informe a senha desejada</p>
       </v-col>
       <v-col cols="12" class="text-start pt-0 pb-2">
-        <v-text-field v-model="state.data.password" prepend-inner-icon="lucide:Lock"
-          :error-messages="r$.data.password.$errors.map((e) => e.$message)" @input="r$.data.password.$touch"
-          @blur="r$.data.password.$touch" @click:append-inner="
+        <v-text-field
+          v-model="state.data.password"
+          prepend-inner-icon="lucide:Lock"
+          :error-messages="r$.data.password.$errors.map((e) => e.$message)"
+          @input="r$.data.password.$touch"
+          @blur="r$.data.password.$touch"
+          @click:append-inner="
             state.passwordFieldType = !state.passwordFieldType
-            " :append-inner-icon="state.passwordFieldType ? 'lucide:Eye' : 'lucide:EyeOff'
-              " :type="state.passwordFieldType ? 'password' : 'text'" label="Senha" />
+          "
+          :append-inner-icon="
+            state.passwordFieldType ? 'lucide:Eye' : 'lucide:EyeClosed'
+          "
+          :type="state.passwordFieldType ? 'password' : 'text'"
+          label="Senha"
+        />
       </v-col>
       <v-col cols="12" class="text-start pt-0 pb-0">
-        <v-text-field v-model="state.data.confirmPassword" prepend-inner-icon="lucide:Lock" :error-messages="r$.data.confirmPassword.$errors.map((e) => e.$message)
-          " @input="r$.data.confirmPassword.$touch" @blur="r$.data.confirmPassword.$touch" @click:append-inner="
+        <v-text-field
+          v-model="state.data.confirmPassword"
+          prepend-inner-icon="lucide:Lock"
+          :error-messages="
+            r$.data.confirmPassword.$errors.map((e) => e.$message)
+          "
+          @input="r$.data.confirmPassword.$touch"
+          @blur="r$.data.confirmPassword.$touch"
+          @click:append-inner="
             state.confirmPasswordFieldType = !state.confirmPasswordFieldType
-            " :append-inner-icon="state.confirmPasswordFieldType ? 'lucide:Eye' : 'lucide:EyeOff'
-              " :type="state.confirmPasswordFieldType ? 'password' : 'text'" label="Confirmar Senha" />
+          "
+          :append-inner-icon="
+            state.confirmPasswordFieldType ? 'lucide:Eye' : 'lucide:EyeClosed'
+          "
+          :type="state.confirmPasswordFieldType ? 'password' : 'text'"
+          label="Confirmar Senha"
+        />
       </v-col>
       <v-col cols="12" class="pt-0 pb-1">
-        <v-btn type="submit" color="primary" flat block class="mb-3 float-start" :loading="state.loading" text="Salvar">
+        <v-btn
+          type="submit"
+          color="primary"
+          flat
+          block
+          class="mb-3 float-start"
+          :loading="state.loading"
+          text="Salvar"
+        >
         </v-btn>
       </v-col>
       <v-col cols="12" class="pt-0 pb-1 text-center">
-        <v-btn :to="{ name: 'auth.login' }" variant="plain" text="Entrar" color="dark"></v-btn>
+        <v-btn
+          :to="{ name: 'auth.login' }"
+          variant="plain"
+          text="Entrar"
+          color="dark"
+        ></v-btn>
       </v-col>
     </v-row>
   </v-form>

@@ -35,9 +35,11 @@ const close = () => emit("update:modelValue", false);
   <v-dialog v-model="isOpen" max-width="700">
     <v-card>
       <v-toolbar class="bg-light px-3 pt-3">
-        <v-toolbar-title class="font-weight-bold">Usuário</v-toolbar-title>
+        <v-toolbar-title class="font-weight-black text-h5"
+          >Usuário</v-toolbar-title
+        >
         <v-spacer />
-        <v-btn icon @click="close" variant="plain">
+        <v-btn icon @click="close" variant="plain" :ripple="false">
           <v-icon>lucide:X</v-icon>
         </v-btn>
       </v-toolbar>
@@ -61,15 +63,52 @@ const close = () => emit("update:modelValue", false);
                 <v-list-item-subtitle>{{ data?.email }}</v-list-item-subtitle>
               </v-list-item>
             </v-col>
-            <v-col cols="12" md="6" class="py-0 px-0" v-if="data?.roles.length > 0">
+            <v-col
+              cols="12"
+              md="6"
+              class="py-0 px-0"
+              v-if="data?.roles.length > 0"
+            >
               <v-list-item>
                 <v-list-item-title>
                   <b>Papéis</b>
                 </v-list-item-title>
                 <v-list-item-subtitle>
-                  <v-chip v-for="role in data?.roles" class="me-2" color="dark" size="x-small" badger rounded
-                    :key="role.id">
+                  <v-chip
+                    v-for="role in data?.roles"
+                    class="me-2"
+                    color="dark"
+                    size="x-small"
+                    badger
+                    rounded
+                    :key="role.id"
+                  >
                     {{ role.name }}
+                  </v-chip>
+                </v-list-item-subtitle>
+              </v-list-item>
+            </v-col>
+            <v-col
+              cols="12"
+              md="6"
+              class="py-0 px-0"
+              v-if="data?.professionals.length > 0"
+            >
+              <v-list-item>
+                <v-list-item-title>
+                  <b>Profissionais</b>
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                  <v-chip
+                    v-for="professional in data?.professionals"
+                    class="me-2"
+                    color="dark"
+                    size="x-small"
+                    badger
+                    rounded
+                    :key="professional.id"
+                  >
+                    {{ professional.name }}
                   </v-chip>
                 </v-list-item-subtitle>
               </v-list-item>
@@ -79,21 +118,43 @@ const close = () => emit("update:modelValue", false);
       </v-card-text>
 
       <v-card-actions class="px-8 py-4 border-t">
-        <v-chip class="mt-2 mb-2" :color="data?.is_active ? 'green' : 'red'"
-          :prepend-icon="data?.is_active ? 'lucide:CircleCheck' : 'lucide:CircleX'"
-          :text="data?.is_active ? 'Ativo' : 'Inativo'" size="x-small" badger rounded />
+        <v-chip
+          class="mt-2 mb-2"
+          :color="data?.is_active ? 'green' : 'red'"
+          :prepend-icon="
+            data?.is_active ? 'lucide:CircleCheck' : 'lucide:CircleX'
+          "
+          :text="data?.is_active ? 'Ativo' : 'Inativo'"
+          size="x-small"
+          badger
+          rounded
+        />
 
-        <v-chip class="ms-2 mt-2 mb-2" color="dark" size="x-small" badger rounded prepend-icon="lucide:Clock">
+        <v-chip
+          class="ms-2 mt-2 mb-2"
+          color="dark"
+          size="x-small"
+          badger
+          rounded
+          prepend-icon="lucide:Clock"
+        >
           Criado em {{ dayjs(data?.created_at).format("DD/MM/YYYY - HH:mm") }}
         </v-chip>
 
-        <v-chip class="ms-2 mt-2 mb-2" color="dark" size="x-small" badger rounded prepend-icon="lucide:Clock">
-          Atualizado em {{ dayjs(data?.updated_at).format("DD/MM/YYYY - HH:mm") }}
+        <v-chip
+          class="ms-2 mt-2 mb-2"
+          color="dark"
+          size="x-small"
+          badger
+          rounded
+          prepend-icon="lucide:Clock"
+        >
+          Atualizado em
+          {{ dayjs(data?.updated_at).format("DD/MM/YYYY - HH:mm") }}
         </v-chip>
 
         <v-spacer />
       </v-card-actions>
-
     </v-card>
   </v-dialog>
 </template>
